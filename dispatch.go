@@ -5,10 +5,10 @@ import (
 	"dacast-log-agent/infrastructure/storage/logsrepository"
 )
 
-func Ingest(id string, createdAt int, accountId, userId, actionType, context string) error {
+func Dispatch(id string, createdAt int, accountId, userId, actionType, context string) error {
 	logsRepository := logsrepository.NewKinesisClient()
 	logsService := logsservice.New(logsRepository)
-	err := logsService.Ingest(id, createdAt, accountId, userId, actionType, context)
+	err := logsService.Dispatch(id, createdAt, accountId, userId, actionType, context)
 	if err != nil {
 		return err
 	}
