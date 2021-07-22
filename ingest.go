@@ -1,4 +1,4 @@
-package main
+package logagent
 
 import (
 	"dacast-log-agent/core/services/logsservice"
