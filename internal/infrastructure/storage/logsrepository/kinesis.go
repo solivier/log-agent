@@ -1,8 +1,8 @@
 package logsrepository
 
 import (
-	"dacast-log-agent/core/domain"
-	"dacast-log-agent/infrastructure/config"
+	"dacast-log-agent/internal/core/domain"
+	"dacast-log-agent/internal/infrastructure/config"
 	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
