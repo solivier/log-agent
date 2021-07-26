@@ -2,30 +2,47 @@ package logsrepository
 
 import (
 	"dacast-log-agent/core/domain"
+	"dacast-log-agent/infrastructure/config"
 	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/mmatagrin/ctxerror"
 	"github.com/pkg/errors"
-	"os"
+	"sync"
 )
 
 var (
 	awsSession *session.Session = nil
+	mutex = &sync.Mutex{}
+    client *kinesis.Kinesis
+	streamName string
 )
 
-func NewKinesisClient() *kinesisClient {
+func NewKinesisClient(config config.KinesisClientConfig) *kinesisClient {
+	streamName = config.StreamName
 	return &kinesisClient{}
+}
+
+func GetClient() (*kinesis.Kinesis, error) {
+	if client == nil{
+		mutex.Lock()
+		defer mutex.Unlock()
+
+		sess, err := createOrGetSession()
+		if err != nil {
+			return nil, err
+		}
+
+		client = kinesis.New(sess)
+	}
+
+	return client, nil
 }
 
 func createOrGetSession() (*session.Session, error) {
 	if awsSession == nil {
-		sess, errSession := session.NewSession(
-			&aws.Config{
-				Region: aws.String(os.Getenv("AWS_REGION")),
-			},
-		)
+		sess, errSession := session.NewSession()
 		if errSession != nil {
 			return nil, errors.Wrap(errSession, "Error while creating AWS session")
 		}
@@ -48,16 +65,14 @@ func (repo *kinesisClient) Save(log domain.Log) error {
 		return ctxErr.Wrap(err, "log fails at marshal into json string")
 	}
 
-	sess, err := createOrGetSession()
-	if err != nil {
+	kinesisClient, err := GetClient()
+	if nil != err {
 		return err
 	}
 
-	kinesisClient := kinesis.New(sess)
-
 	_, err = kinesisClient.PutRecord(&kinesis.PutRecordInput{
 		Data:         bytes,
-		StreamName:   aws.String(os.Getenv("STREAM_NAME")),
+		StreamName:   aws.String(streamName),
 		PartitionKey: aws.String(log.Id),
 	})
 

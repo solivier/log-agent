@@ -6,17 +6,17 @@ import (
 	"github.com/mmatagrin/ctxerror"
 )
 
-func New(logsRepository adapters.LogsRepository) *service {
-	return &service{
+func New(logsRepository adapters.LogsRepository) *Service {
+	return &Service{
 		logsRepository: logsRepository,
 	}
 }
 
-type service struct {
+type Service struct {
 	logsRepository adapters.LogsRepository
 }
 
-func (srv *service) Dispatch(id string, createdAt int, accountId, userId, actionType, context string) error {
+func (srv *Service) Dispatch(id string, createdAt int, accountId, userId, actionType, context string) error {
 	ctxErr := ctxerror.SetContext(map[string]interface{}{
 		"id":     id,
 		"created-at": createdAt,
