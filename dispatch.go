@@ -2,16 +2,15 @@ package logagent
 
 import (
 	"dacast-log-agent/internal/core/services/logsservice"
-	"dacast-log-agent/internal/infrastructure/config"
 	"dacast-log-agent/internal/infrastructure/storage"
 	"sync"
 )
 
 var logsService *logsservice.Service
 var mutex = &sync.Mutex{}
-var clientConfig config.ClientConfig
+var clientConfig ClientConfig
 
-func SetConfig(config *config.ClientConfig) {
+func SetConfig(config *ClientConfig) {
 	clientConfig = *config
 }
 

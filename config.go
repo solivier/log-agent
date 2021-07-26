@@ -1,4 +1,4 @@
-package config
+package logagent
 
 type ClientConfig struct {
 	ClientType string
