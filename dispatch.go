@@ -11,8 +11,8 @@ var logsService *logsservice.Service
 var mutex = &sync.Mutex{}
 var clientConfig config.ClientConfig
 
-func SetConfig(config *config.ClientConfig) {
-	clientConfig = *config
+func SetConfig(config config.ClientConfig) {
+	clientConfig = config
 }
 
 func getService() (*logsservice.Service, error) {
