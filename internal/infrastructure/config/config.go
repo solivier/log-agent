@@ -1,9 +1,6 @@
 package config
 
-type KinesisClientConfig struct {
-	StreamName string
-}
-
-func NewKinesisClientConfig(streamName string) *KinesisClientConfig {
-	return &KinesisClientConfig{StreamName: streamName}
+type ClientConfig struct {
+	ClientType string
+	Config map[string]string
 }

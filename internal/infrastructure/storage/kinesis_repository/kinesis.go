@@ -1,4 +1,4 @@
-package logsrepository
+package kinesis_repository
 
 import (
 	"dacast-log-agent/internal/core/domain"
@@ -19,8 +19,8 @@ var (
 	streamName string
 )
 
-func NewKinesisClient(config config.KinesisClientConfig) *kinesisClient {
-	streamName = config.StreamName
+func NewKinesisClient(config config.ClientConfig) *kinesisClient {
+	streamName = config.Config["streamName"]
 	return &kinesisClient{}
 }
 
