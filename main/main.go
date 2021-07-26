@@ -1,8 +1,8 @@
 package main
 
 import (
-	logagent "dacast-log-agent"
-	"dacast-log-agent/config"
+	"log-agent"
+	"log-agent/config"
 )
 
 func main() {

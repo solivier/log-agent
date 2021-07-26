@@ -1,9 +1,9 @@
 package kinesis_repository
 
 import (
-	"dacast-log-agent/config"
-	"dacast-log-agent/lib/core/adapters"
 	"github.com/mmatagrin/ctxerror"
+	"log-agent/config"
+	"log-agent/lib/core/adapters"
 )
 
 func GetRepository(config config.ClientConfig) (adapters.LogsRepository, error) {

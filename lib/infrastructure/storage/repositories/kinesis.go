@@ -1,14 +1,14 @@
 package kinesis_repository
 
 import (
-	"dacast-log-agent/config"
-	"dacast-log-agent/lib/core/domain"
 	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/mmatagrin/ctxerror"
 	"github.com/pkg/errors"
+	"log-agent/config"
+	"log-agent/lib/core/domain"
 	"sync"
 )
 
