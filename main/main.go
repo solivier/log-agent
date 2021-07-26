@@ -3,7 +3,7 @@ package main
 
 import (
 	logagent "dacast-log-agent"
-	"dacast-log-agent/internal/infrastructure/config"
+	"dacast-log-agent/config"
 )
 
 func main() {

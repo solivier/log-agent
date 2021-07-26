@@ -29,7 +29,7 @@ func (srv *Service) Dispatch(id string, createdAt int, accountId, userId, action
 	log := domain.NewLog(id, createdAt, accountId, userId, actionType, context)
 
 	if err := srv.logsRepository.Save(log); err != nil {
-		return ctxErr.Wrap(err, "Create log into repository has failed")
+		return ctxErr.Wrap(err, "Create log into repositories has failed")
 	}
 
 	return nil

@@ -1,16 +1,17 @@
 package logagent
 
 import (
+	"dacast-log-agent/config"
 	"dacast-log-agent/internal/core/services/logsservice"
-	"dacast-log-agent/internal/infrastructure/storage"
+	"dacast-log-agent/internal/infrastructure/storage/repositories"
 	"sync"
 )
 
 var logsService *logsservice.Service
 var mutex = &sync.Mutex{}
-var clientConfig ClientConfig
+var clientConfig config.ClientConfig
 
-func SetConfig(config *ClientConfig) {
+func SetConfig(config *config.ClientConfig) {
 	clientConfig = *config
 }
 
@@ -19,7 +20,7 @@ func getService() (*logsservice.Service, error) {
 		mutex.Lock()
 		defer mutex.Unlock()
 
-		logsRepository, err := storage.GetRepository(clientConfig)
+		logsRepository, err := kinesis_repository.GetRepository(clientConfig)
 		if nil != err {
 			return nil, err
 		}
