@@ -2,7 +2,7 @@ package kinesis_repository
 
 import (
 	"dacast-log-agent/config"
-	"dacast-log-agent/internal/core/adapters"
+	"dacast-log-agent/lib/core/adapters"
 	"github.com/mmatagrin/ctxerror"
 )
 

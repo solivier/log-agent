@@ -1,8 +1,8 @@
 package logsservice
 
 import (
-	"dacast-log-agent/internal/core/adapters"
-	"dacast-log-agent/internal/core/domain"
+	"dacast-log-agent/lib/core/adapters"
+	"dacast-log-agent/lib/core/domain"
 	"github.com/mmatagrin/ctxerror"
 )
 

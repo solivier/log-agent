@@ -2,7 +2,7 @@ package kinesis_repository
 
 import (
 	"dacast-log-agent/config"
-	"dacast-log-agent/internal/core/domain"
+	"dacast-log-agent/lib/core/domain"
 	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"

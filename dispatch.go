@@ -2,8 +2,8 @@ package logagent
 
 import (
 	"dacast-log-agent/config"
-	"dacast-log-agent/internal/core/services/logsservice"
-	"dacast-log-agent/internal/infrastructure/storage/repositories"
+	"dacast-log-agent/lib/core/services/logsservice"
+	"dacast-log-agent/lib/infrastructure/storage/repositories"
 	"sync"
 )
 
