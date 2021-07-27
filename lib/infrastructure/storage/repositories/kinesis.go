@@ -17,10 +17,12 @@ var (
 	mutex = &sync.Mutex{}
     client *kinesis.Kinesis
 	streamName string
+	awsRegion string
 )
 
 func NewKinesisClient(config config.ClientConfig) *kinesisClient {
 	streamName = config.Config["streamName"]
+	awsRegion = config.Config["awsRegion"]
 	return &kinesisClient{}
 }
 
@@ -42,7 +44,11 @@ func GetClient() (*kinesis.Kinesis, error) {
 
 func createOrGetSession() (*session.Session, error) {
 	if awsSession == nil {
-		sess, errSession := session.NewSession()
+		sess, errSession := session.NewSession(
+			&aws.Config{
+				Region: aws.String(awsRegion),
+			},
+		)
 		if errSession != nil {
 			return nil, errors.Wrap(errSession, "Error while creating AWS session")
 		}

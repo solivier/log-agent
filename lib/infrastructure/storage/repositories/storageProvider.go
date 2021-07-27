@@ -14,4 +14,3 @@ func GetRepository(config config.ClientConfig) (adapters.LogsRepository, error) 
 		return nil, ctxerror.New("no repositories found for " + config.ClientType)
 	}
 }
-

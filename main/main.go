@@ -2,12 +2,15 @@ package main
 
 import (
 	"log-agent"
-	"log-agent/config"
 )
 
 func main() {
-	logagent.SetConfig(config.ClientConfig{ClientType: "kinesis", Config: map[string]string{"streamName": "poc-log-manager"}})
-	err := logagent.Dispatch("id3", 123, "12345", "12345", "the action 3", "the context 3")
+	config := make(map[string]interface{})
+	config["clienttype"] = "kinesis"
+	config["config"] = map[string]string{"streamName":"poc-log-manager", "awsRegion": "us-east-1"}
+
+	logagent.SetConfig(config)
+	err := logagent.Dispatch("id3", 123, "12345", "12345", "the action 4", "the context 666")
 	if err != nil {
 		return
 	}

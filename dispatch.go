@@ -1,6 +1,7 @@
 package logagent
 
 import (
+	"github.com/mitchellh/mapstructure"
 	"log-agent/config"
 	"log-agent/lib/core/services/logsservice"
 	"log-agent/lib/infrastructure/storage/repositories"
@@ -11,8 +12,16 @@ var logsService *logsservice.Service
 var mutex = &sync.Mutex{}
 var clientConfig config.ClientConfig
 
-func SetConfig(config config.ClientConfig) {
-	clientConfig = config
+func SetConfig(logAgentConfig map[string]interface{}) error {
+	result := config.ClientConfig{}
+	err := mapstructure.Decode(logAgentConfig, &result)
+	if err != nil {
+		return err
+	}
+
+	clientConfig = result
+
+	return nil
 }
 
 func getService() (*logsservice.Service, error) {

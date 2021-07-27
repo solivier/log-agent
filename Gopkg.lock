@@ -61,6 +61,14 @@
   revision = "c2b33e84"
 
 [[projects]]
+  digest = "1:2a3c9556884d94bdbcdcdc62350f8cf466cf7eb39669fe7a0640f2600f61ceaf"
+  name = "github.com/mitchellh/mapstructure"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8ebf2d61a8b4adcce25fc9fc9b76e8452a00672f"
+  version = "v1.4.1"
+
+[[projects]]
   branch = "master"
   digest = "1:e823f9c3cf23d437b8970658afb7efb6528f0f4baa0ee05146d04db858975f90"
   name = "github.com/mmatagrin/ctxerror"
@@ -83,6 +91,7 @@
     "github.com/aws/aws-sdk-go/aws",
     "github.com/aws/aws-sdk-go/aws/session",
     "github.com/aws/aws-sdk-go/service/kinesis",
+    "github.com/mitchellh/mapstructure",
     "github.com/mmatagrin/ctxerror",
     "github.com/pkg/errors",
   ]
