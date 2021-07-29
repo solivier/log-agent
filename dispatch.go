@@ -39,13 +39,13 @@ func getService() (*logsservice.Service, error) {
 	return logsService, nil
 }
 
-func Dispatch(id string, createdAt int, accountId, userId, actionType, context string) error {
+func Dispatch(id string, createdAt int, accountId, userId, actionType, serviceId, context string) error {
 	logsService, err := getService()
 	if nil != err {
 		return err
 	}
 
-	err = logsService.Dispatch(id, createdAt, accountId, userId, actionType, context)
+	err = logsService.Dispatch(id, createdAt, accountId, userId, actionType, serviceId, context)
 	if err != nil {
 		return err
 	}
