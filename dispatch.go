@@ -5,6 +5,7 @@ import (
 	"log-agent/config"
 	"log-agent/lib/core/services/logsservice"
 	"log-agent/lib/infrastructure/storage/repositories"
+	uuid "github.com/satori/go.uuid"
 	"sync"
 )
 
@@ -39,13 +40,14 @@ func getService() (*logsservice.Service, error) {
 	return logsService, nil
 }
 
-func Dispatch(id string, createdAt int, accountId, userId, actionType, serviceId, context string) error {
+func Dispatch(createdAt int, accountId, userId, actionType, serviceId, context string) error {
 	logsService, err := getService()
 	if nil != err {
 		return err
 	}
+	id := uuid.NewV4()
 
-	err = logsService.Dispatch(id, createdAt, accountId, userId, actionType, serviceId, context)
+	err = logsService.Dispatch(id.String(), createdAt, accountId, userId, actionType, serviceId, context)
 	if err != nil {
 		return err
 	}
