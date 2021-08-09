@@ -2,8 +2,8 @@ package logsservice
 
 import (
 	"github.com/mmatagrin/ctxerror"
-	"log-agent/lib/core/adapters"
-	"log-agent/lib/core/domain"
+	"github.com/solivier/log-agent/lib/core/adapters"
+	"github.com/solivier/log-agent/lib/core/domain"
 )
 
 func New(logsRepository adapters.LogsRepository) *Service {

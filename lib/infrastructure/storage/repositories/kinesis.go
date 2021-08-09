@@ -7,8 +7,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/mmatagrin/ctxerror"
 	"github.com/pkg/errors"
-	"log-agent/config"
-	"log-agent/lib/core/domain"
+	"github.com/solivier/log-agent/config"
+	"github.com/solivier/log-agent/lib/core/domain"
 	"sync"
 )
 

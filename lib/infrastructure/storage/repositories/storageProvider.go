@@ -2,8 +2,8 @@ package kinesis_repository
 
 import (
 	"github.com/mmatagrin/ctxerror"
-	"log-agent/config"
-	"log-agent/lib/core/adapters"
+	"github.com/solivier/log-agent/config"
+	"github.com/solivier/log-agent/lib/core/adapters"
 )
 
 func GetRepository(config config.ClientConfig) (adapters.LogsRepository, error) {
