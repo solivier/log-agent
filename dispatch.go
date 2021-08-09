@@ -5,8 +5,6 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/solivier/log-agent/config"
 	"github.com/solivier/log-agent/lib/core/services/logsservice"
-	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
-	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
 	kinesisRepo "github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
 	"sync"
 )
