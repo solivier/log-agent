@@ -3,9 +3,10 @@ package logagent
 import (
 	"github.com/mitchellh/mapstructure"
 	uuid "github.com/satori/go.uuid"
-	"log-agent/config"
-	"log-agent/lib/core/services/logsservice"
-	"log-agent/lib/infrastructure/storage/repositories"
+	"github.com/solivier/log-agent/config"
+	"github.com/solivier/log-agent/lib/core/services/logsservice"
+	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
+	kinesis_repository "log-agent/lib/infrastructure/storage/repositories"
 	"sync"
 )
 
