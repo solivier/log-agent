@@ -6,7 +6,8 @@ import (
 	"github.com/solivier/log-agent/config"
 	"github.com/solivier/log-agent/lib/core/services/logsservice"
 	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
-	kinesis_repository "github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
+	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
+	kinesisRepo "log-agent/lib/infrastructure/storage/repositories"
 	"sync"
 )
 
@@ -31,7 +32,7 @@ func getService() (*logsservice.Service, error) {
 		mutex.Lock()
 		defer mutex.Unlock()
 
-		logsRepository, err := kinesis_repository.GetRepository(clientConfig)
+		logsRepository, err := kinesisRepo.GetRepository(clientConfig)
 		if nil != err {
 			return nil, err
 		}
