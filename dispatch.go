@@ -7,7 +7,7 @@ import (
 	"github.com/solivier/log-agent/lib/core/services/logsservice"
 	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
 	"github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
-	kinesisRepo "log-agent/lib/infrastructure/storage/repositories"
+	kinesisRepo "github.com/solivier/log-agent/lib/infrastructure/storage/repositories"
 	"sync"
 )
 
