@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log-agent"
 )
 
@@ -10,8 +11,8 @@ func main() {
 	config["config"] = map[string]string{"streamName":"poc-log-manager", "awsRegion": "us-east-1"}
 
 	logagent.SetConfig(config)
-	err := logagent.Dispatch(123, "12345", "12345", "the action 4", "second-test", "the context 666")
+	err := logagent.Dispatch(123, "test2", "test", "the action 666", "second-test", "the context 666888")
 	if err != nil {
-		return
+		fmt.Println(err)
 	}
 }

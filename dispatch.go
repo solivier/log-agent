@@ -2,10 +2,10 @@ package logagent
 
 import (
 	"github.com/mitchellh/mapstructure"
+	uuid "github.com/satori/go.uuid"
 	"log-agent/config"
 	"log-agent/lib/core/services/logsservice"
 	"log-agent/lib/infrastructure/storage/repositories"
-	uuid "github.com/satori/go.uuid"
 	"sync"
 )
 
@@ -45,7 +45,7 @@ func Dispatch(createdAt int, accountId, userId, actionType, serviceId, context s
 	if nil != err {
 		return err
 	}
-	id := uuid.NewV4()
+	id, _ := uuid.NewV4()
 
 	err = logsService.Dispatch(id.String(), createdAt, accountId, userId, actionType, serviceId, context)
 	if err != nil {
