@@ -45,7 +45,7 @@ func Dispatch(createdAt int, accountId, userId, actionType, serviceId, context s
 	if nil != err {
 		return err
 	}
-	id, _ := uuid.NewV4()
+	id := uuid.NewV4()
 
 	err = logsService.Dispatch(id.String(), createdAt, accountId, userId, actionType, serviceId, context)
 	if err != nil {
